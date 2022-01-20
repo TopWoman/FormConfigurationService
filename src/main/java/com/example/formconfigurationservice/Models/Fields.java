@@ -2,7 +2,7 @@ package com.example.formconfigurationservice.Models;
 
 import java.util.Map;
 
-public class Field {
+public class Fields {
 
     private Map<String, String> type;
     private Map<String, String> valueType;
