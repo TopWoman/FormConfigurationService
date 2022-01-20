@@ -36,23 +36,25 @@ public class Controllers {
     public List<Employee> getAllEmployee() {
         return employeeService.detAllEmployee();
     }
-//
-//    /*Удаление*/
-//    @GetMapping(value = "/employeeId/{employeeId}")
-//    public String deleteEmployee(@PathVariable String employeeId) {
-//        employeeRepository.deleteById(employeeId);
-//        return "Deleted Message Successfully: "+ employeeId;
-//    }
-//
-//    /*Пойск по ID*/
-//    @GetMapping("/employeeId/{id}")
-//    public Optional<Employee> getEmployeeId(@PathVariable String id) {
-//        return employeeRepository.findById(id);
-//    }
+
+
+
+    /*Удаление*/
+    @GetMapping(value = "/employeeId/{employeeId}")
+    public String deleteEmployee(@PathVariable String employeeId) {
+        employeeRepository.deleteById(employeeId);
+        return "Deleted Message Successfully: "+ employeeId;
+    }
+
+    /*Пойск по ID*/
+    @GetMapping("/employeeId/{id}")
+    public Optional<Employee> getEmployeeId(@PathVariable String id) {
+        return employeeRepository.findById(id);
+    }
 
 //    /*Пойск по fornName Д О П И С А Т Ь*/
 //    @GetMapping("/getFormName/{fornName}")
 //    public Employee getFormName(@PathVariable String fornName) {
 //        return employeeService.searchFormName(fornName);
-    }
-//}
+//    }
+}

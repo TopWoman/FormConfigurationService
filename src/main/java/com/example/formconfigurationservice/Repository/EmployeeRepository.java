@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface EmployeeRepository extends MongoRepository<Employee, String> {
 
+//    List<Employee> findByFullNameLike(String fullName);
+
 //    @Query("{fullName:'?0'}")
 //    List<Employee> findCustomByFullName(String fullName);
 //    List<Employee> satellite(String fullSatellite);

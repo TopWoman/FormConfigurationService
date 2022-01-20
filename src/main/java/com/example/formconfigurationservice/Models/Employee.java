@@ -1,6 +1,5 @@
 package com.example.formconfigurationservice.Models;
 
-import com.example.formconfigurationservice.Enum.Field;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +15,7 @@ public class Employee {
     private String id;
     private String formName;
     private String label;
-    private Map<String, String> sattelite; // убогий словарь
+    private Map<String, String> satellite; // убогий словарь
     private List<Field> fields;            // убогий список
 
     public List<Field> getField() {
@@ -47,22 +46,22 @@ public class Employee {
         this.formName = formName;
     }
 
-    public Map<String, String> getSattelite() {
-        return sattelite;
+    public Map<String, String> getSatellite() {
+        return satellite;
     }
-    public void setSattelite(Map<String, String> sattelite) {
-        this.sattelite = sattelite;
+    public void setSatellite(Map<String, String> satellite) {
+        this.satellite = satellite;
     }
 
     public Employee(String formName) {
         this.formName = formName;
     }
 
-    public Employee(String id, String formName, String label, Map<String, String> sattelite) {
+    public Employee(String id, String formName, String label, Map<String, String> satellite) {
         this.id = null;
         this.formName = formName;
         this.label = label;
-        this.sattelite = sattelite;
+        this.satellite = satellite;
     }
 
 }
