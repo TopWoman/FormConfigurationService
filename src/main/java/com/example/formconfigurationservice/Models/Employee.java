@@ -4,6 +4,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,13 +16,13 @@ public class Employee {
     private String id;
     private String formName;
     private String label;
-    private Map<String, String> satellite; // убогий словарь
-    private List<Field> fields;            // убогий список
+    private ArrayList<Satellite> satellite;       // убогий словарь
+    private ArrayList<Fields> fields;            // убогий список
 
-    public List<Field> getField() {
+    public ArrayList<Fields> getFields() {
         return fields;
     }
-    public void setField(List<Field> fields) {
+    public void setFields(ArrayList<Fields> fields) {
         this.fields = fields;
     }
 
@@ -39,17 +40,17 @@ public class Employee {
         this.label = label;
     }
 
-    public String getFormName(String formName) {
-        return this.formName;
+    public String getFormName() {
+        return formName;
     }
     public void setFormName(String formName) {
         this.formName = formName;
     }
 
-    public Map<String, String> getSatellite() {
+    public ArrayList<Satellite> getSatellite() {
         return satellite;
     }
-    public void setSatellite(Map<String, String> satellite) {
+    public void setSatellite(ArrayList<Satellite> satellite) {
         this.satellite = satellite;
     }
 
@@ -57,11 +58,12 @@ public class Employee {
         this.formName = formName;
     }
 
-    public Employee(String id, String formName, String label, Map<String, String> satellite) {
+    public Employee(String id, String formName, String label, ArrayList<Satellite> satellite, ArrayList<Fields> fields) {
         this.id = null;
         this.formName = formName;
         this.label = label;
         this.satellite = satellite;
+        this.fields = fields;
     }
 
 }
