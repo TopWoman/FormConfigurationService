@@ -6,9 +6,10 @@ import com.example.formconfigurationservice.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,13 +38,25 @@ public class Controllers {
         return employeeService.detAllEmployee();
     }
 
+    @PutMapping("/{id}")
+    public Employee updateEmployee(@RequestBody Employee  employee, @PathVariable String id) {
+        employee.setId(id);
+        employeeRepository.save(employee);
+        return  employee;
+    }
 
-
-    /*Удаление*/
-    @GetMapping(value = "/employeeId/{employeeId}")
+    /*Удаление по ID*/
+    @DeleteMapping(value = "/employeeDeleteId/{employeeId}")
     public String deleteEmployee(@PathVariable String employeeId) {
         employeeRepository.deleteById(employeeId);
         return "Deleted Message Successfully: "+ employeeId;
+    }
+
+    /*Удаление ALL*/
+    @DeleteMapping(value = "/employeeDeleteAll")
+    public ResponseEntity<Employee> deleteEmployeeAll() {
+        employeeRepository.deleteAll();
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     /*Пойск по ID*/
@@ -52,9 +65,9 @@ public class Controllers {
         return employeeRepository.findById(id);
     }
 
-//    /*Пойск по fornName Д О П И С А Т Ь*/
-//    @GetMapping("/getFormName/{fornName}")
-//    public Employee getFormName(@PathVariable String fornName) {
-//        return employeeService.searchFormName(fornName);
-//    }
+    /*Пойск по formName*/
+    @GetMapping("/getFormName/{formName}")
+    public List<Employee> getFormName(@PathVariable String formName) {
+            return employeeService.formNameSearch(formName);
+    }
 }
