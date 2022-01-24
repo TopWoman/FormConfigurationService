@@ -41,14 +41,14 @@ public class EmployeeService {
         return mongoTemplate.find(query, Employee.class);
     }
 
-    public Employee update(Employee employee){
-        Query query = new Query();
-        query.addCriteria(Criteria.where("id").is(employee.getId()));
-        Update update = new Update();
-        update.set("formName", employee.getFormName());
-        update.set("label", employee.getLabel());
-        return mongoTemplate.findAndModify(query, update, Employee.class);
-    }
+//    public Employee update(Employee employee){
+//        Query query = new Query();
+//        query.addCriteria(Criteria.where("id").is(employee.getId()));
+//        Update update = new Update();
+//        update.set("formName", employee.getFormName());
+//        update.set("label", employee.getLabel());
+//        return mongoTemplate.findAndModify(query, update, Employee.class);
+//    }
 
 
 //    public String findCustomByFullName(String fornName) {
