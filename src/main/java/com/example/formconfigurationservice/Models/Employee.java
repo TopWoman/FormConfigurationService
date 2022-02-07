@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor
-@Document
+//@Document
+
 public class Employee {
 
     @Id
@@ -59,7 +60,7 @@ public class Employee {
         this.formName = formName;
     }
 
-    public Employee(String id, String formName, String label, ArrayList<Satellite> satellite, ArrayList<Fields> fields) {
+    public Employee( String formName, String label, ArrayList<Satellite> satellite, ArrayList<Fields> fields) {
         this.id = null;
         this.formName = formName;
         this.label = label;
