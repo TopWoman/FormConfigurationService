@@ -20,7 +20,6 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-//    private final EmployeeDao employeeDao;
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -39,6 +38,13 @@ public class EmployeeService {
     {
         Query query = new Query();
         query.addCriteria(Criteria.where("formName").is(formName));
+        return mongoTemplate.find(query, Employee.class);
+    }
+
+    public List<Employee> idSearch(String id)
+    {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("satellite.id").is(id));
         return mongoTemplate.find(query, Employee.class);
     }
 

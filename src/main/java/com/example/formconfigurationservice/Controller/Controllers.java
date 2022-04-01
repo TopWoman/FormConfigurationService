@@ -1,14 +1,11 @@
 package com.example.formconfigurationservice.Controller;
 
 import com.example.formconfigurationservice.Models.Employee;
-import com.example.formconfigurationservice.Models.Fields;
-import com.example.formconfigurationservice.Models.Satellite;
 import com.example.formconfigurationservice.Repository.EmployeeRepository;
 import com.example.formconfigurationservice.Service.EmployeeService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +14,18 @@ import java.util.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.MediaType;
+
+
 @RestController
+@RequestMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 public class Controllers {
+
     @Autowired
     private EmployeeService employeeService;
 
     @Autowired
     private EmployeeRepository employeeRepository;
-//    private final SatelliteRep satelliteRep;
     public Controllers(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
@@ -65,7 +66,7 @@ public class Controllers {
     /*Чтение*/
     @GetMapping("/all")
     public List<Employee> getAllEmployee() {
-        return employeeService.detAllEmployee();
+        return employeeRepository.findAll();
     }
 
     /*Редактирование*/
@@ -77,29 +78,35 @@ public class Controllers {
     }
 
     /*Удаление по ID*/
-    @DeleteMapping(value = "/employeeDeleteId/{employeeId}")
+    @DeleteMapping("/employeeDeleteId/{employeeId}")
     public String deleteEmployee(@PathVariable String employeeId) {
         employeeRepository.deleteById(employeeId);
         return "Deleted Message Successfully: "+ employeeId;
     }
 
     /*Удаление ALL*/
-    @DeleteMapping(value = "/employeeDeleteAll")
+    @DeleteMapping("/deleteAll")
     public ResponseEntity<Employee> deleteEmployeeAll() {
         employeeRepository.deleteAll();
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    /*Пойск (пойск омг) по ID*/
+    /*Поиск (пойск омг, И ШТО???) по ID*/
     @GetMapping("/schemas/{id}")
     public Optional<Employee> getEmployeeId(@PathVariable String id) {
         return employeeRepository.findById(id);
     }
 
-    /*Пойск по formName*/
+//    /*Поиск по formName*/
     @GetMapping("/getFormName/{formName}")
     public List<Employee> getFormName(@PathVariable String formName) {
             return employeeService.formNameSearch(formName);
+    }
+
+    /*Поиск по idSatellite*/
+    @GetMapping(value = "/getIdSatellite/{id}")
+    public List<Employee> getIsId(@PathVariable String id) {
+        return employeeService.idSearch(id);
     }
 
     //записать куки

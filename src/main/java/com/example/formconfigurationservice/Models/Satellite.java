@@ -10,19 +10,14 @@ import java.util.Map;
 public class Satellite {
 
     @Id
-    private ObjectId id;
-
-    public Satellite() {
-        this.id = new ObjectId();
-    }
-
+    private String id;
     private Map<String, String> satelliteType;
     private Map<String, String> satelliteClassifier;
 
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 

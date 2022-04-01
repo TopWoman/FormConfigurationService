@@ -10,21 +10,17 @@ import java.util.Map;
 public class Fields {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     private Map<String, String> editorType;
     private String label;
     private ValueType valueType;
-    private String destinationField;
+    private List<String> destinationField;
 
-    public Fields() {
-        this.id = ObjectId.get();
-    }
-
-    public ObjectId getId() {
+    public String getId() {
         return id;
     }
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -41,7 +37,7 @@ public class Fields {
     public String getLabel() { return label; }
     public void setLabel(String label) { this.label = label; }
 
-    public String getDestinationField() { return destinationField; }
-    public void setDestinationField(String destinationField) { this.destinationField = destinationField; }
+    public List<String> getDestinationField() { return destinationField; }
+    public void setDestinationField(List<String> destinationField) { this.destinationField = destinationField; }
 
 }
